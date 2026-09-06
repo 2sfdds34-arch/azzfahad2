@@ -24,7 +24,7 @@ if uploaded_file is not None:
 
     if st.button("Analyze PDF"):
 
-        webhook_url = "https://noofas.app.n8n.cloud/webhook-test/pdf-agents"
+        webhook_url = "https://azizfahad35.app.n8n.cloud/webhook-test/bdf-agents"
 
         files = {
             "file": (
@@ -82,55 +82,4 @@ if uploaded_file is not None:
                 st.error("Something went wrong.")
 
                 st.write(e)
-                st.divider()
-
-st.subheader("💬 Ask about this PDF")
-
-question = st.text_input(
-    "Enter your question"
-)
-
-if st.button("Ask AI"):
-
-    question_webhook_url = "https://noofas.app.n8n.cloud/webhook/pdf-questions"
-
-    files = {
-        "file": (
-            uploaded_file.name,
-            uploaded_file.getvalue(),
-            "application/pdf"
-        )
-    }
-
-    data = {
-        "question": question
-    }
-
-    with st.spinner("Thinking..."):
-
-        response = requests.post(
-            question_webhook_url,
-            files=files,
-            data=data
-        )
-
-        if response.status_code == 200:
-
-            result = response.json()
-
-            st.success("Answer generated successfully.")
-
-            st.subheader("🤖 Answer")
-
-            st.write(result["answer"])
-
-        else:
-
-            st.error(
-                f"Request failed with status code: "
-                f"{response.status_code}"
-            )
-
-            st.write(response.text)
-app.py
-3 KB
+              
